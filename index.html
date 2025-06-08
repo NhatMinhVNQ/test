@@ -3,40 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Shop Maya Os</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      padding-top: 50px;
-    }
-    #visitor-count {
-      font-size: 20px;
-      color: #333;
-      margin-top: 20px;
-    }
-  </style>
+  <title>Kiểm tra lượt truy cập</title>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-KRBHD31QE1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-KRBHD31QE1');
+  </script>
 </head>
 <body>
-
-  <h1>Chào mừng bạn đến Shop Maya Os</h1>
-  <p>Website chính thức của Maya Os VNQ</p>
-
-  <div id="visitor-count">
-    Số lượt truy cập: <span id="count">Đang tải...</span>
-  </div>
-
-  <script>
-    fetch('https://api.countapi.xyz/hit/shopmayaos1.github.io/visits')
-      .then(response => response.json())
-      .then(data => {
-        document.getElementById('count').innerText = data.value;
-      })
-      .catch(error => {
-        document.getElementById('count').innerText = "Không thể tải!";
-        console.error('Lỗi tải số lượt truy cập:', error);
-      });
-  </script>
-
+  <h1>Chào mừng bạn đến với website</h1>
+  <p>Đoạn mã theo dõi Google Analytics đã được chèn thành công.</p>
 </body>
 </html>
