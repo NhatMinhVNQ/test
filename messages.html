@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Lịch Sử Tin Nhắn</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f3e8ff;
+      color: #333;
+      padding: 20px;
+    }
+    h2 {
+      color: #a855f7;
+    }
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    li {
+      background: white;
+      margin: 10px 0;
+      padding: 10px 15px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+  <h2>Tin nhắn đã gửi:</h2>
+  <ul id="msg-list"></ul>
+
+  <script>
+    const list = document.getElementById("msg-list");
+    const history = JSON.parse(localStorage.getItem("chatHistory")) || [];
+    history.forEach(msg => {
+      const li = document.createElement("li");
+      li.textContent = msg;
+      list.appendChild(li);
+    });
+  </script>
+</body>
+</html>
