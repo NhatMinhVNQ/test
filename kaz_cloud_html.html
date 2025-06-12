@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>KazCloud – Nhận tài khoản miễn phí</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f4f4f4; margin: 0; padding: 0; }
+    .container { max-width: 800px; margin: auto; padding: 20px; background: #fff; }
+    h1 { text-align: center; }
+    .item { border: 1px solid #ddd; padding: 15px; margin: 10px 0; border-radius: 5px; display: flex; align-items: center; }
+    .item img { width: 64px; height: 64px; margin-right: 15px; }
+    .item-content { flex: 1; }
+    .item-content h3 { margin: 0 0 5px; }
+    .item-content p { margin: 5px 0; color: #555; }
+    .item-content button { padding: 8px 12px; background: #007bff; color: #fff; border: none; border-radius: 3px; cursor: pointer; }
+    .item-content button:disabled { background: #999; cursor: not-allowed; }
+    .history { margin-top: 30px; }
+    .history table { width: 100%; border-collapse: collapse; }
+    .history th, .history td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+    .footer { text-align: center; color: #888; font-size: 14px; margin-top: 30px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Nhận tài khoản UG miễn phí</h1>
+
+    <div class="item">
+      <img src="ug-phone-icon.png" alt="UG Phone">
+      <div class="item-content">
+        <h3>UG Phone</h3>
+        <p>Trải nghiệm mượt mà với máy ảo của UG thử nghiệm miễn phí 4H</p>
+        <p><strong id="count">Còn 3 tài khoản</strong></p>
+        <button id="receiveBtn">Nhận ngay</button>
+      </div>
+    </div>
+
+    <div class="history">
+      <h2>Lịch sử nhận tài khoản gần đây:</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Mã người nhận</th>
+            <th>Thời gian nhận</th>
+            <th>Loại tài khoản</th>
+          </tr>
+        </thead>
+        <tbody id="historyTable">
+          <tr><td colspan="3">Chưa có lượt nhận tài khoản nào trong hôm nay.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="footer">
+      &copy; 2025 Kazcloud.site – Tất cả quyền được bảo lưu.<br>
+      Thiết kế bởi Khac Viet
+    </div>
+  </div>
+
+  <script>
+    const codes = ["248241", "8472947", "1937472"];
+    const btn = document.getElementById("receiveBtn");
+    const countEl = document.getElementById("count");
+    const historyTable = document.getElementById("historyTable");
+
+    function updateCount() {
+      countEl.textContent = `Còn ${codes.length} tài khoản`;
+    }
+
+    btn.addEventListener("click", () => {
+      if (codes.length === 0) return;
+
+      const index = Math.floor(Math.random() * codes.length);
+      const selectedCode = codes.splice(index, 1)[0];
+
+      const now = new Date().toLocaleString();
+
+      if (historyTable.querySelector("td[colspan]")) {
+        historyTable.innerHTML = ""; // Xoá hàng "Chưa có lượt..."
+      }
+
+      const row = document.createElement("tr");
+      row.innerHTML = `
+        <td>${selectedCode}</td>
+        <td>${now}</td>
+        <td>UG Phone</td>
+      `;
+      historyTable.appendChild(row);
+
+      updateCount();
+
+      if (codes.length === 0) {
+        btn.disabled = true;
+        btn.textContent = "Hết lượt";
+      }
+    });
+
+    updateCount();
+  </script>
+</body>
+</html>
